@@ -3,7 +3,7 @@ The SMSAR model is simulated using the R project for statistical computing, R is
 
 A detailed presentation of the model is presented in the reseach paper: Conditional Seasonal Markov-Switching Autoregressive Model to Simulate Extreme Events: Application to River Flow by Bassel Habeeb, Emilio Bastidas-Arteaga, Mauricio Sánchez-Silva, and You Dong
 
-The input is the river flow values of the Thames, the website to download the dataset is available in: https://nrfa.ceh.ac.uk/
+The input is the river flow values of the Thames, the website to download the dataset (file: UKdatabase.xlsx) was downloaded from: https://nrfa.ceh.ac.uk/
 
 The SMSAR model code is provided in the article. A summary of main stepts is provided as follows:
 
