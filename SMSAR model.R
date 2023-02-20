@@ -35,14 +35,14 @@ library(rsq)
 library(strucchange)
 # set working directory in which you want to open and save your extractions
 
-setwd("C:/Users/BASSEL/Desktop/PHD third year/Previous Work/Long memory process/SMSAR Model/SMSAR Model using R/results")
+setwd("C:/Users/SMSAR Model using R/results")
 
 #######################################
 # Reading (opening) the data file and choosing specific data from it
 
-File<- read_excel("C:/Users/BASSEL/Desktop/PHD third year/Previous Work/Long memory process/SMSAR Model/SMSAR Model using R/UKdatabase.xlsx")
-data <- read_excel("C:/Users/BASSEL/Desktop/PHD third year/Previous Work/Long memory process/SMSAR Model/SMSAR Model using R/UKdatabase.xlsx",range = cell_cols("B") )
-Time <- read_excel("C:/Users/BASSEL/Desktop/PHD third year/Previous Work/Long memory process/SMSAR Model/SMSAR Model using R/UKdatabase.xlsx",range = cell_cols("A"))
+File<- read_excel("C:/Users/SMSAR Model using R/UKdatabase.xlsx")
+data <- read_excel("C:/Users/SMSAR Model/SMSAR Model using R/UKdatabase.xlsx",range = cell_cols("B") )
+Time <- read_excel("C:/Users/SMSAR Model using R/UKdatabase.xlsx",range = cell_cols("A"))
 
 #######################################
 #Analyzing the data file
@@ -264,7 +264,6 @@ pCriteria
 kpsstest.resulttrend=ifelse(KpssTesttrendpvalue<pCriteria && kpssTesttrendstatistic>0.739,"Time series is non stationary","Time series is stationary")
 kpsstest.resulttrend
 
-
 #Kpss Level test
 
 kpsstestLevel=kpss.test(data.month, null = c("Level"),lshort = TRUE)
@@ -298,7 +297,7 @@ kpsstest.resultLevel
 #adf.test(x, alternative = c("stationary", "explosive"),
 #         k = trunc((length(x)-1)^(1/3)))
 
-# Consequtive adf test time serious
+# Consequtive adf test time series
 adfcons=adf.test(data.month,alternative = c("stationary"), k = trunc((length(data.month)-1)^(1/3)))#k=1 can be used too 
 adfcons
 adfcons$statistic
@@ -720,7 +719,7 @@ mod.lynx.hh$ll_history#log-likelihood for each iterations of the EM algorithm
 mod.lynx.hh$Iter#number of iterations run before EM converged
 mod.lynx.hh$Npar#number of parameters in the model
 mod.lynx.hh$BIC#Bayes Information Criterion
-mod.lynx.hh$smoothedprob#smoothing probabilities P(Xt|y0, · · · , yT )
+mod.lynx.hh$smoothedprob#smoothing probabilities P(Xt|y0, Â· Â· Â· , yT )
 write.xlsx(
   mod.lynx.hh[["theta"]][["A"]],
   file="MSAR model.xlsx",
@@ -954,7 +953,7 @@ write.xlsx(
 Bsim = 100# can be any large no. at least 100
 Ksim = Bsim*N.samples;Ksim
 ksimm=100# this is used in Y0 and y.sim insteal of Ksim
-# Relancé les simulations juseque le théta est présque le meme comme dans le pre determinations indicé avant 
+# RelancÃ© les simulations juseque le thÃ©ta est prÃ©sque le meme comme dans le pre determinations indicÃ© avant 
 Y0 = array(Y[1,sample(1:dim(Y)[1],1,replace=T),],c(2,ksimm,1))
 Y.sim = simule.nh.MSAR(mod.lynx.hh$theta,Y0 = Y,T,N.samples = ksimm)
 Y.sim$S#simulated Markov chain
